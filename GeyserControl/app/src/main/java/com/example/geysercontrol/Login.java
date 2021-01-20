@@ -55,7 +55,7 @@ public class Login extends AppCompatActivity {
 
 
         //uncomment following code if you want to enable auto login
-        /*if (user!=null)
+       /* if (user!=null)
         {
             Intent intent = new Intent(getApplicationContext(),Menu.class);
             startActivity(intent);
@@ -139,10 +139,10 @@ public class Login extends AppCompatActivity {
 
 
                             Intent Deviceintent = new Intent(getApplicationContext(),SignUp.class);
-                            ArrayList<String> list=getList();
-                            String str = list.toString();
-                            Toast.makeText(Login.this, str, Toast.LENGTH_SHORT).show();
-                            Deviceintent.putStringArrayListExtra("deviceList",list);
+                           // ArrayList<String> list=getList();
+                           // String str = list.toString();
+                           // Toast.makeText(Login.this, str, Toast.LENGTH_SHORT).show();
+                            //Deviceintent.putStringArrayListExtra("deviceList",list);
 
 
 
@@ -164,7 +164,7 @@ public class Login extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(),SignUp.class));
     }
 
-    public ArrayList<String> getList()
+   /* public ArrayList<String> getList()
     {
         //deviceList = new ArrayList<>();
 
@@ -180,7 +180,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                /*if (snapshot.exists())
+                *//*if (snapshot.exists())
                 {
                     for(DataSnapshot dataSnapshot:snapshot.getChildren())
                     {
@@ -193,7 +193,7 @@ public class Login extends AppCompatActivity {
 
                     Toast.makeText(Login.this, deviceList.toString(), Toast.LENGTH_SHORT).show();
                     Log.e("new List",newList.toString());
-                }*/
+                }*//*
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -203,15 +203,12 @@ public class Login extends AppCompatActivity {
         //Toast.makeText(Login.this, deviceList.toString(), Toast.LENGTH_SHORT).show();
         Log.e("new List",deviceList.toString());
         return deviceList;
-
+*/
         // tried returning "newList", still causing same issue
 
-    }
 
-    public void addToList(ArrayList<String> list)
-    {
 
-    }
+
 
 
 

@@ -15,6 +15,10 @@ import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -33,6 +37,7 @@ public class Menu extends AppCompatActivity {
     private RadioButton radioButton;
     private RadioGroup radioGroup;
     private boolean radioBool=true;
+    private GoogleSignInClient mGoogleSignInClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +50,9 @@ public class Menu extends AppCompatActivity {
         btn_logout=findViewById(R.id.button8);
         name=findViewById(R.id.textView11);
         mail=findViewById(R.id.textView12);
+        name.setVisibility(View.INVISIBLE);
 
-        GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(this);
+        final GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(this);
 
 
         mDatabase = FirebaseDatabase.getInstance();
@@ -78,6 +84,11 @@ public class Menu extends AppCompatActivity {
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(getApplicationContext(),Login.class);
+
+
+
+                signOut();
+
                 startActivity(intent);
             }
         });
@@ -94,12 +105,12 @@ public class Menu extends AppCompatActivity {
 
     private void showData(DataSnapshot snapshot) {
 
-
-            deviceInfo.setMotor(snapshot.child("Motor").getValue(String.class));
-            deviceInfo.setTemp(snapshot.child("Temp").getValue(String.class));
-            String str = deviceInfo.getMotor();
-            radioInit(deviceInfo.getMotor());
-
+            if (snapshot.exists()) {
+                deviceInfo.setMotor(snapshot.child("Motor").getValue(String.class));
+                deviceInfo.setTemp(snapshot.child("Temp").getValue(String.class));
+                String str = deviceInfo.getMotor();
+                radioInit(deviceInfo.getMotor());
+            }
          /*   Log.e("Motor",str);*/
 
 
@@ -156,5 +167,22 @@ public class Menu extends AppCompatActivity {
             }
         }
 
+    }
+
+    private void signOut() {
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+
+        // Build a GoogleSignInClient with the options specified by gso.
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+        mGoogleSignInClient.signOut()
+                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        // ...
+                    }
+                });
     }
 }

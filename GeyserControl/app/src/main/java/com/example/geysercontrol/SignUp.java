@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -31,6 +32,7 @@ public class SignUp extends AppCompatActivity {
     private DatabaseReference mChild;
     private ArrayList<String> deviceList=new ArrayList<>();;
     private ArrayList<String> deviceList_key=new ArrayList<>();;
+    private Button buttonAdd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +41,14 @@ public class SignUp extends AppCompatActivity {
         //ArrayList<String> arrayList = (ArrayList<String>) Deviceintent.getSerializableExtra("deviceList");
 //        Log.e("check list",arrayList.toString());
 
+        buttonAdd=findViewById(R.id.buttonAdd);
+        buttonAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),AddDevice.class);
+                startActivity(intent);
+            }
+        });
 
         final ArrayAdapter arrayAdapter = new ArrayAdapter<>(SignUp.this, android.R.layout.simple_list_item_1,deviceList);
         myListView = (ListView) findViewById(R.id.myListView);

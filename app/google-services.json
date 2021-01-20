@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "571111397456",
+    "project_id": "fypdatabase-949f8",
+    "storage_bucket": "fypdatabase-949f8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:571111397456:android:7627dbdf9afa675394d955",
+        "android_client_info": {
+          "package_name": "com.example.geysercontrol"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "571111397456-m69gukto1n7b8f1lvhrtnf4vmdjedus0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.geysercontrol",
+            "certificate_hash": "7e6d7f415baa5d9c01799ae17a7daf13110c88a2"
+          }
+        },
+        {
+          "client_id": "571111397456-tlfqadjqeaptojhbcqic4bdfj1betno0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvg2IeNJtzYvqCgtffpj7gb00IpXL31eY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "571111397456-tlfqadjqeaptojhbcqic4bdfj1betno0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
